@@ -171,7 +171,7 @@ export default function DonationForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           amount: getAmountInCents(),
-          currency: "aud",
+          currency: "usd",
           frequency: parsed.frequency,
           interval: parsed.interval,
           intervalCount: parsed.intervalCount,

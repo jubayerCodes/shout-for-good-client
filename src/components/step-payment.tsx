@@ -63,6 +63,7 @@ export default function StepPayment({
     },
   });
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const issueReceipt = watch("issueReceipt");
   const getUpdates = watch("getUpdates");
 
@@ -78,8 +79,8 @@ export default function StepPayment({
     donationData.frequency === "one-time"
       ? "One time donation"
       : donationData.frequency === "fortnightly"
-      ? "Fortnightly donation"
-      : "Monthly donation";
+        ? "Fortnightly donation"
+        : "Monthly donation";
 
   const onFormSubmit = (data: PaymentData) => {
     if (!cardComplete) {
@@ -113,19 +114,13 @@ export default function StepPayment({
         {/* Name */}
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
-            <Input
-              placeholder="First Name"
-              {...register("firstName")}
-            />
+            <Input placeholder="First Name" {...register("firstName")} />
             {errors.firstName && (
               <p className="text-xs text-red-500">{errors.firstName.message}</p>
             )}
           </div>
           <div className="space-y-1.5">
-            <Input
-              placeholder="Last Name"
-              {...register("lastName")}
-            />
+            <Input placeholder="Last Name" {...register("lastName")} />
             {errors.lastName && (
               <p className="text-xs text-red-500">{errors.lastName.message}</p>
             )}
@@ -174,7 +169,10 @@ export default function StepPayment({
           }
           className="mt-0.5"
         />
-        <Label htmlFor="issueReceipt" className="text-sm cursor-pointer leading-snug">
+        <Label
+          htmlFor="issueReceipt"
+          className="text-sm cursor-pointer leading-snug"
+        >
           Issue receipt in my name and details entered above
         </Label>
       </div>
@@ -211,9 +209,7 @@ export default function StepPayment({
             }}
           />
         </div>
-        {cardError && (
-          <p className="text-xs text-red-500">{cardError}</p>
-        )}
+        {cardError && <p className="text-xs text-red-500">{cardError}</p>}
       </div>
 
       {/* Additional Information */}
@@ -228,7 +224,10 @@ export default function StepPayment({
             }
             className="mt-0.5"
           />
-          <Label htmlFor="getUpdates" className="text-xs cursor-pointer text-gray-500 leading-snug">
+          <Label
+            htmlFor="getUpdates"
+            className="text-xs cursor-pointer text-gray-500 leading-snug"
+          >
             Get updates from Princes Court Ltd – you can opt out at any time
           </Label>
         </div>
@@ -251,7 +250,7 @@ export default function StepPayment({
           </div>
           <div className="flex justify-between text-sm font-bold text-gray-900">
             <span>Total</span>
-            <span>AUD ${amount.toFixed(2)}</span>
+            <span>${amount.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -260,8 +259,8 @@ export default function StepPayment({
       <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
         <p className="text-xs text-amber-800 flex items-start gap-2">
           <span className="text-amber-500 mt-0.5">⚠</span>
-          Please note this transaction is processed by Shout For Good which will appear
-          as the merchant on your statement.
+          Please note this transaction is processed by Shout For Good which will
+          appear as the merchant on your statement.
         </p>
       </div>
 
@@ -275,11 +274,22 @@ export default function StepPayment({
       {/* Terms */}
       <p className="text-[10px] text-gray-400 leading-relaxed">
         By completing your payment, you are agreeing to the{" "}
-        <a href="#" className="text-teal-600 hover:underline">Terms</a> and{" "}
-        <a href="#" className="text-teal-600 hover:underline">Privacy Policy</a>.
-        This site is protected by Cloudflare and the Cloudflare{" "}
-        <a href="#" className="text-teal-600 hover:underline">Privacy Policy</a> and{" "}
-        <a href="#" className="text-teal-600 hover:underline">Terms of Service</a> apply.
+        <a href="#" className="text-teal-600 hover:underline">
+          Terms
+        </a>{" "}
+        and{" "}
+        <a href="#" className="text-teal-600 hover:underline">
+          Privacy Policy
+        </a>
+        . This site is protected by Cloudflare and the Cloudflare{" "}
+        <a href="#" className="text-teal-600 hover:underline">
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a href="#" className="text-teal-600 hover:underline">
+          Terms of Service
+        </a>{" "}
+        apply.
       </p>
 
       {/* Submit */}

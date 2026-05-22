@@ -239,6 +239,18 @@ export default function DonationForm() {
       // 3. Payment succeeded
       setLastIssueReceipt(paymentFormData.issueReceipt);
       setPaymentSuccess(true);
+
+      // 4. Send receipt email via SMTP (fire-and-forget)
+      if (paymentFormData.issueReceipt && result.paymentIntent?.id) {
+        fetch(`${API_URL}/api/send-receipt`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            paymentIntentId: result.paymentIntent.id,
+            email: paymentFormData.email,
+          }),
+        }).catch(() => {});
+      }
     } catch (error) {
       setPaymentError(
         error instanceof Error ? error.message : "An unexpected error occurred."

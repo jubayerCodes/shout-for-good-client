@@ -33,7 +33,7 @@ export default function AdminPage() {
   const [config, setConfig] = useState<DonationConfig | null>(null);
   const [amounts, setAmounts] = useState<number[]>([]);
   const [recurringOptions, setRecurringOptions] = useState<RecurringOption[]>(
-    []
+    [],
   );
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -57,6 +57,7 @@ export default function AdminPage() {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchConfig();
   }, [fetchConfig]);
 
@@ -111,7 +112,7 @@ export default function AdminPage() {
   const updateRecurringOption = (
     index: number,
     field: keyof RecurringOption,
-    value: string | number
+    value: string | number,
   ) => {
     const newOptions = [...recurringOptions];
     newOptions[index] = { ...newOptions[index], [field]: value };
@@ -144,11 +145,7 @@ export default function AdminPage() {
               Donation Configuration
             </h1>
           </div>
-          <Button
-            onClick={handleSave}
-            disabled={saving}
-            className="gap-2"
-          >
+          <Button onClick={handleSave} disabled={saving} className="gap-2">
             {saving ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : saved ? (
@@ -179,8 +176,8 @@ export default function AdminPage() {
           </div>
           <div className="p-6 space-y-4">
             <p className="text-sm text-gray-500">
-              These are the preset amounts shown as buttons on the donation form.
-              Users can always enter a custom amount.
+              These are the preset amounts shown as buttons on the donation
+              form. Users can always enter a custom amount.
             </p>
 
             <div className="space-y-3">
@@ -270,7 +267,7 @@ export default function AdminPage() {
                           updateRecurringOption(
                             index,
                             "interval",
-                            e.target.value
+                            e.target.value,
                           )
                         }
                         className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
@@ -294,7 +291,7 @@ export default function AdminPage() {
                           updateRecurringOption(
                             index,
                             "intervalCount",
-                            parseInt(e.target.value) || 1
+                            parseInt(e.target.value) || 1,
                           )
                         }
                       />

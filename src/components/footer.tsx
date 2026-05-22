@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-200 bg-white mt-auto">
       <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-start md:items-center gap-4">
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <p className="text-xs text-gray-400">Powered by</p>
           <p className="text-2xl font-black text-gray-900 tracking-tight">Shout.</p>
         </div>

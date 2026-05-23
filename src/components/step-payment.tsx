@@ -56,7 +56,7 @@ export default function StepPayment({
       firstName: defaultValues?.firstName || "",
       lastName: defaultValues?.lastName || "",
       email: defaultValues?.email || "",
-      countryCode: defaultValues?.countryCode || "+61",
+      countryCode: defaultValues?.countryCode || "+1",
       phone: defaultValues?.phone || "",
       issueReceipt: defaultValues?.issueReceipt ?? true,
       getUpdates: defaultValues?.getUpdates || false,
@@ -145,8 +145,8 @@ export default function StepPayment({
             {...register("countryCode")}
             className="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-sm text-gray-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
           >
-            <option value="+61">+61</option>
             <option value="+1">+1</option>
+            <option value="+61">+61</option>
             <option value="+44">+44</option>
             <option value="+91">+91</option>
             <option value="+880">+880</option>
